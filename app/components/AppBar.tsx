@@ -21,7 +21,7 @@ export const AppBar: FC<Props> = ({ initialized, initializePlayer, createInvitat
         if (invitation) {
             setInvitation(invitation);
         }
-    })
+    },[])
 
     const handleCreateClick = async () => {
         setIsCreateVisible(prevState => !prevState)
