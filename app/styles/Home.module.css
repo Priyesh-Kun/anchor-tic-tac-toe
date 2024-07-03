@@ -1,0 +1,186 @@
+.body {
+  background: #0C0C0C;
+  height: 100vh;
+  font-family: 'DM Sans', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.AppBar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 10vh;
+  width: 100vw;
+  font-size: 30px;
+}
+
+.features{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  right: 1vw;
+  font-size: 17px;
+  width: 24vw;
+}
+
+.features>div>button{
+  color: #0C0C0C;
+  background: #F2613F;
+  width: 173px;
+  height: 47px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.features>div>button:hover{
+  color: #fff;
+  background: #9B3922;
+  font-size: 16px;
+}
+
+.createInvitation{
+  position: absolute;
+  right: 0vw;
+  margin-top: 1vw;
+  background: #272727;
+  width: 40vw;
+  height: 10vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.createInvitation>input{
+  width: 25vw;
+  height: 40px;
+  border-radius: 5px;
+  padding: 1vw;
+  color: #0C0C0C;
+}
+
+.createInvitation>button{
+  background: #ffb71c;
+  height: 40px;
+  width: 10vw;
+  border-radius: 5px;
+  color: #0C0C0C;
+  transition: 0.3s;
+}
+
+.createInvitation>button:hover{
+  background: #b88414;
+  color: white;
+  font-size: 16px;
+}
+
+.createInvitationAnimation-enter{
+  opacity: 0;
+}
+
+.createInvitationAnimation-enter-active{
+  opacity: 1;
+  transition: 200ms;
+}
+
+.createInvitationAnimation-exit{
+  opacity: 1;
+}
+.createInvitationAnimation-exit-active{
+  opacity: 0;
+  transition: 200ms;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 10vw);
+  grid-template-rows: repeat(3, 10vw);
+  gap: 5px;
+}
+
+.neutralTile{
+  background: #ffffff;
+  transition: 0.3s;
+}
+
+.playerTile{
+  background: rgb(58, 166, 255);
+}
+
+.neutralTile:hover{
+  background: rgb(58, 166, 255);;
+}
+
+.opponentTile{
+  background: #F2613F;
+}
+
+.hasChance{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to top,#3700ff6b, #4687ff75);
+  height: 90vh;
+  padding: 5vw;
+}
+
+.notHasChance{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 90vh;
+  background: #272727;
+  padding: 5vw;
+  /* background: black; */
+}
+
+.intro{
+  background:#181818;
+  height: 90vh;
+  color: white;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  font-size: 17px;
+}
+
+.intro>h1{
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.intro>h2{
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.intro>p{
+  width: 60vw;
+}
+.intro>ol{
+  width: 58vw;
+  padding-left: 2vw;
+}
+
+.player{
+  color: rgb(58, 166, 255);
+}
+.opponent{
+  color: #F2613F;
+}
+
+.walletButton{
+  position: absolute;
+  left: 1vw;
+  top: 2.5vh;
+}

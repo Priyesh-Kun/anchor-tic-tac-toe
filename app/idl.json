@@ -1,0 +1,741 @@
+{
+  "address": "AmjKDcAmfZHesXUmcn3e8Z1jDoDActvSm9ooZXiUKuTY",
+  "metadata": {
+    "name": "tic_tac_toe",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "accept_invitation",
+      "discriminator": [
+        114,
+        70,
+        62,
+        248,
+        204,
+        49,
+        98,
+        239
+      ],
+      "accounts": [
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "inviter_authority",
+          "docs": [
+            "CHECK"
+          ]
+        },
+        {
+          "name": "invitee_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "inviter",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  85,
+                  83,
+                  69,
+                  82,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "inviter_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "invitee",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  85,
+                  83,
+                  69,
+                  82,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "invitee_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "invitations_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  73,
+                  78,
+                  86,
+                  73,
+                  84,
+                  65,
+                  84,
+                  73,
+                  79,
+                  78,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "game_account",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  71,
+                  65,
+                  77,
+                  69,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "invitations_account"
+              },
+              {
+                "kind": "arg",
+                "path": "invitation.index"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "invitation",
+          "type": {
+            "defined": {
+              "name": "Invitation"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_invitation",
+      "discriminator": [
+        52,
+        19,
+        21,
+        13,
+        54,
+        156,
+        27,
+        172
+      ],
+      "accounts": [
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "inviter_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "invitee_authority",
+          "docs": [
+            "CHECK"
+          ]
+        },
+        {
+          "name": "inviter",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  85,
+                  83,
+                  69,
+                  82,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "inviter_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "invitee",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  85,
+                  83,
+                  69,
+                  82,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "invitee_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "invitations_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  73,
+                  78,
+                  86,
+                  73,
+                  84,
+                  65,
+                  84,
+                  73,
+                  79,
+                  78,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "game_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  71,
+                  65,
+                  77,
+                  69,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "invitations_account"
+              },
+              {
+                "kind": "account",
+                "path": "invitations_account.invitations",
+                "account": "InvitationsAccount"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_invitations_account",
+      "discriminator": [
+        40,
+        77,
+        152,
+        191,
+        191,
+        205,
+        228,
+        36
+      ],
+      "accounts": [
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "invitations_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  73,
+                  78,
+                  86,
+                  73,
+                  84,
+                  65,
+                  84,
+                  73,
+                  79,
+                  78,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_player",
+      "discriminator": [
+        79,
+        249,
+        88,
+        177,
+        220,
+        62,
+        56,
+        128
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  85,
+                  83,
+                  69,
+                  82,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "make_move",
+      "discriminator": [
+        78,
+        77,
+        152,
+        203,
+        222,
+        211,
+        208,
+        233
+      ],
+      "accounts": [
+        {
+          "name": "player_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "opponent_authority",
+          "docs": [
+            "CHECK"
+          ]
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  85,
+                  83,
+                  69,
+                  82,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "player_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "opponent",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  85,
+                  83,
+                  69,
+                  82,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "opponent_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "invitations_account",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  73,
+                  78,
+                  86,
+                  73,
+                  84,
+                  65,
+                  84,
+                  73,
+                  79,
+                  78,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "game_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  71,
+                  65,
+                  77,
+                  69,
+                  95,
+                  83,
+                  84,
+                  65,
+                  84,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "invitations_account"
+              },
+              {
+                "kind": "arg",
+                "path": "invitation.index"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "invitation",
+          "type": {
+            "defined": {
+              "name": "Invitation"
+            }
+          }
+        },
+        {
+          "name": "tile",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GameData",
+      "discriminator": [
+        237,
+        88,
+        58,
+        243,
+        16,
+        69,
+        238,
+        190
+      ]
+    },
+    {
+      "name": "InvitationsAccount",
+      "discriminator": [
+        100,
+        109,
+        49,
+        254,
+        112,
+        179,
+        227,
+        109
+      ]
+    },
+    {
+      "name": "PlayerData",
+      "discriminator": [
+        197,
+        65,
+        216,
+        202,
+        43,
+        139,
+        147,
+        128
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvitationNotFound",
+      "msg": "Invitation not found."
+    },
+    {
+      "code": 6001,
+      "name": "InvalidInvitation",
+      "msg": "Invalid Invitation"
+    }
+  ],
+  "types": [
+    {
+      "name": "GameData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "inviter",
+            "type": "pubkey"
+          },
+          {
+            "name": "invitee",
+            "type": "pubkey"
+          },
+          {
+            "name": "is_finished",
+            "type": "bool"
+          },
+          {
+            "name": "winner",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Invitation",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "index",
+            "type": "u8"
+          },
+          {
+            "name": "inviter_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "invitee_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "inviter",
+            "type": "pubkey"
+          },
+          {
+            "name": "invitee",
+            "type": "pubkey"
+          },
+          {
+            "name": "game_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "pending",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "InvitationsAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "invitations",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Invitation"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlayerData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "tiles",
+            "type": {
+              "array": [
+                "u8",
+                3
+              ]
+            }
+          },
+          {
+            "name": "in_game",
+            "type": "bool"
+          },
+          {
+            "name": "has_chance",
+            "type": "bool"
+          },
+          {
+            "name": "last_game",
+            "type": "u8"
+          },
+          {
+            "name": "last_invitation",
+            "type": "u8"
+          },
+          {
+            "name": "game_account",
+            "type": "pubkey"
+          }
+        ]
+      }
+    }
+  ]
+}
