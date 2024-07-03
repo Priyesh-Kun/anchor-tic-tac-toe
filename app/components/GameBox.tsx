@@ -51,7 +51,7 @@ export const GameBox: FC<Props> = ({ gameInvitationArray, makeMove, player, play
 
         return () => clearInterval(intervalId);
 
-    },[])
+    },[invitation])
 
     const onTileClick = async (index: number) => {
         makeMove(opponentAuthority, invitation, index)
